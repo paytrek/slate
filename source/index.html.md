@@ -7,17 +7,12 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - php
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://sandbox.paytrek.com/sandbox/signup/'>Sign Up for API & Secret Key</a>
 
-includes:
-  - errors
 
 search: true
 ---
 
-FORMAT: 1A
-HOST: https://sandbox.paytrek.com/api/v2/
 
 # Paytrek
 ![Paytrek](https://sandbox.paytrek.com/static/images/logo2.png)
@@ -49,7 +44,7 @@ Paytrek provides you following ways to integrate:
 ![Checkout Form](https://sandbox.paytrek.com/static/images/Hosted-Payment.png)
 
 1. The customer submits an order on merchant web site.
-2. Merchant requests a token from Paytrek via the [Sale](#reference/0/sale) Resource.
+2. Merchant requests a token from Paytrek via the [Sale](?#sale) Resource.
 3. Paytrek returns the merchant a `sale_token`.
 4. Merchant redirects the customer to checkout form on Paytrek with the token. [[1]](#note-direct-charge)
 5. Customer enters card data on Paytrek Hosted Form.
@@ -76,7 +71,7 @@ Paytrek provides you following ways to integrate:
 
 1. The customer checks out on your web site.
 2. Customer enters card data on your web site.
-3. You charge on Paytrek via the [Direct Charge](#reference/0/direct-charge) Resource.
+3. You charge on Paytrek via the [Direct Charge](?#direct-charge) Resource.
 4. Paytrek processes the payment.
 5. Paytrek receives a response from the related processor.
 6. Paytrek returns you a response with the payment result.
@@ -86,8 +81,8 @@ Paytrek provides you following ways to integrate:
 
 1. The customer checks out on your web site.
 2. Customer enters card data on your form and and you make a call to Create Card Token with PaytrekJS.
-3. You save the card token and create a sale via [Sale](#reference/0/sale) Resource.
-4. You make a call to [Charge with Card Token](#reference/0/charge-with-token) Resource with card token and sale token.
+3. You save the card token and create a sale via [Sale](?#sale) Resource.
+4. You make a call to [Charge with Card Token](?#charge-with-token) Resource with card token and sale token.
 5. Paytrek processes the payment.
 6. Paytrek receives a response from the related processor.
 7. Paytrek returns you a response with the payment result.
@@ -96,8 +91,8 @@ Paytrek provides you following ways to integrate:
 ![Pre-Authorization](https://sandbox.paytrek.com/static/images/Pre-Authorization.png)
 
 1. The customer checks out on your web site.
-2. Customer enters card data on your form and you make a call to [Direct Charge](#reference/0/direct-charge) Resource with `pre_auth: true` option.
-3. You make a call to [Capture](#reference/0/capture) endpoint with ```sale_token```.
+2. Customer enters card data on your form and you make a call to [Direct Charge](?#direct-charge) Resource with `pre_auth: true` option.
+3. You make a call to [Capture](?#capture) endpoint with ```sale_token```.
 4. Paytrek processes the payment.
 5. Paytrek receives a response from the related processor.
 6. Paytrek returns you a response with the payment result.
@@ -115,7 +110,7 @@ must include secure_option parameter with true variable.
 ## 3D Transactions on Paytrek Hosted Payment Form
 
 1. The customer checks out on your web site.
-2. You request a token from Paytrek via the [Sale](#reference/0/sale) Resource.
+2. You request a token from Paytrek via the [Sale](?#sale) Resource.
 3. Paytrek returns you a `sale_token`.
 4. Redirect your customer to hosted form on Paytrek with the `sale_token`. [[1]](#)
 5. Customer enters card data.
@@ -142,7 +137,7 @@ must include secure_option parameter with true variable.
 
 1. The customer checks out on your web site.
 2. Customer enters card data on your web site.
-3. You charge on Paytrek via the [Direct Charge](#reference/0/direct-charge) Resource.
+3. You charge on Paytrek via the [Direct Charge](?#direct-charge) Resource.
 4. Paytrek returns you a response with a field `forward_url`.
 6. You redirect the customer to the given `forward_url`.
 7. Customer is redirected to Paytrek and Paytrek redirects the customer to 3D secure system.
@@ -161,7 +156,7 @@ must include secure_option parameter with true variable.
 1. The customer checks out on your web site.
 2. Customer enters card data on your form and and you make a call to Create Card Token with PaytrekJS.
 3. You save the `card_token` and create a sale via Sale Resource.
-4. You send a request to [Charge with Card Token](#reference/0/charge_with_token) Resource with the card token you obtained and the sale you have created.
+4. You send a request to [Charge with Card Token](?#charge_with_token) Resource with the card token you obtained and the sale you have created.
 5. Paytrek returns you a response with a field `forward_url`.
 6. You redirect the customer to the given `forward_url`.
 7. Customer is redirected to Paytrek and Paytrek redirects the customer to 3D secure system.
@@ -197,15 +192,15 @@ All requests must include ```Content-Type: application/json```
 
 | Resource      | Endpoint      | Allowed HTTP Methods |
 | ------------- |:-------------| :-----:|
-| [`Sale`](#reference/0/sale)      | ```/api/v2/sale/``` | ```POST``` ```GET```|
-| [`Charge`](#reference/0/charge)      | ```/api/v2/charge/``` | ```POST``` |
-| [`Direct Charge`](#reference/0/direct-charge)| ```/api/v2/direct_charge/``` | ```POST``` |
-| [`Vault`](#reference/0/vault) | ```/api/v2/vault/``` | ```POST``` ```GET``` |
-| [`Charge With Token`](#reference/0/charge-with-token) | ```/api/v2/charge_with_token/``` | ```POST``` |
-| [`Capture`](#reference/0/capture) | ```/api/v2/capture/``` | ```POST``` |
-| [`Cancel`](#reference/0/cancel) | ```/api/v2/cancel/``` | ```POST``` |
-| [`Refund`](#reference/0/refund) | ```/api/v2/refund/``` | ```POST``` |
-| [`Installments`](#reference/0/installments) | ```/api/v2/installments/``` | ```GET``` |
+| [`Sale`](?#sale)      | ```/api/v2/sale/``` | ```POST``` ```GET```|
+| [`Charge`](?#charge)      | ```/api/v2/charge/``` | ```POST``` |
+| [`Direct Charge`](?#direct-charge)| ```/api/v2/direct_charge/``` | ```POST``` |
+| [`Vault`](?#vault) | ```/api/v2/vault/``` | ```POST``` ```GET``` |
+| [`Charge With Token`](?#charge-with-token) | ```/api/v2/charge_with_token/``` | ```POST``` |
+| [`Capture`](?#capture) | ```/api/v2/capture/``` | ```POST``` |
+| [`Cancel`](?#cancel) | ```/api/v2/cancel/``` | ```POST``` |
+| [`Refund`](?#refund) | ```/api/v2/refund/``` | ```POST``` |
+| [`Installments`](?#installments) | ```/api/v2/installments/``` | ```GET``` |
 
 
 ## Paytrek Environment URLs
@@ -482,7 +477,7 @@ Paytrek.Checkout widget allows you to integrate
 embedded checkout form on your web site incredibly easy. 
 This widget will redirect the customer to the given 
 `return_url` [1](#). In this `return_url`, you must query the status of
-the sale via [Sale Resource](#reference/0/sale). 
+the sale via [Sale Resource](?#sale). 
 If the sale status is one of **Paid**, **Ready to Send**, **Authorized** and
 **PreAuthorized** it means the sale has been successfully charged.
 
@@ -640,9 +635,11 @@ Paytrek Wallet is the payout platform that used to make payments for your payees
 The platform comprise of two main components for completing payments 
 and payout flow. They are [Wallet API](https://paytrekwallet.docs.apiary.io/#introduction/paytrek-wallet-api) and [Payee Dashboard](https://paytrekwallet.docs.apiary.io/#introduction/payee-dashboard).
 
+# Endpoints
+
 ## Sale
 
-> Following command creates a sale object and returns JSON structured like this:
+> Following request creates sale object
 
 #### HTTP `POST` Request - Create Sale
 
@@ -768,12 +765,109 @@ curl_close($ch);
 var_dump($response);
 ```
 
-> The above command creates a sale object and returns JSON structured like this:
+> Response - HTTP 201 status code
 
 ```json
 {
   "request_id": null,
   "sys_time": 1521014319,
+  "language_code": "en-us",
+  "transactions": [],
+  "currency": "TRY",
+  "order_id": "1467034250",
+  "amount": "24.00",
+  "installment": 1,
+  "sale_token": "c626f49193114e24ad0980752b749318",
+  "expires_at": "2018-03-14T08:58:39.519205Z",
+  "secure_option": true,
+  "half_secure": null,
+  "pre_auth": false,
+  "return_url": null,
+  "customer_first_name": "John",
+  "customer_last_name": "Doe",
+  "customer_email": "johndoe@gmail.com",
+  "customer_ip_address": "212.57.9.204",
+  "billing_city": "San Francisco",
+  "billing_country": "US",
+  "billing_zipcode": null,
+  "billing_state": "CA",
+  "billing_phone": null,
+  "sale_data": {
+    "merchant_name": "Ted"
+  },
+  "items": [
+    {
+      "name": "product_name",
+      "photo": "https://sandbox.paytrek.com/statics/images/testing.jpg",
+      "quantity": 2,
+      "unit_price": "12.00"
+    }
+  ],
+  "created_at": "2018-03-14T07:58:39.519707Z",
+  "callback_url": null,
+  "refunded_amount": "0.00",
+  "status": "Created",
+  "financial_status": null,
+  "description": null,
+  "is_locked": false,
+  "hosted_payment": true,
+  "billing_address": "123 Market St. San Francisco",
+  "billing_company": null
+}
+```
+
+> Following request retrieve a sale object
+
+#### HTTP `GET` Request - Retrieve Sale
+
+`https://sandbox.paytrek.com/api/v2/sale/<sale_token>/`
+
+```shell
+curl --include \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+  'https://sandbox.paytrek.com/api/v2/sale/{sale_token}/'
+```
+
+
+```python
+from urllib2 import Request, urlopen
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/sale/{sale_token}/', headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/sale/{sale_token}/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "request_id": null,
+  "sys_time": 1521014392,
   "language_code": "en-us",
   "transactions": [],
   "currency": "TRY",
@@ -860,101 +954,6 @@ between tabs via using swicth console.
 |sale_data|json| No |Extra fields for sale.|
 
 
-#### HTTP `GET` Request - Retrieve Sale
-
-`https://sandbox.paytrek.com/api/v2/sale/<sale_token>/`
-
-```shell
-curl --include \
-     --header "Content-Type: application/json" \
-     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
-  'https://sandbox.paytrek.com/api/v2/sale/{sale_token}/'
-```
-
-```python
-from urllib2 import Request, urlopen
-
-headers = {
-  'Content-Type': 'application/json',
-  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
-}
-request = Request('https://sandbox.paytrek.com/api/v2/sale/{sale_token}/', headers=headers)
-
-response_body = urlopen(request).read()
-print response_body
-```
-
-```php
-<?php
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/sale/{sale_token}/");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_HEADER, FALSE);
-
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-  "Content-Type: application/json",
-  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
-));
-
-$response = curl_exec($ch);
-curl_close($ch);
-
-var_dump($response);
-```
-
-> Response
-
-```json
-{
-  "request_id": null,
-  "sys_time": 1521014392,
-  "language_code": "en-us",
-  "transactions": [],
-  "currency": "TRY",
-  "order_id": "1467034250",
-  "amount": "24.00",
-  "installment": 1,
-  "sale_token": "c626f49193114e24ad0980752b749318",
-  "expires_at": "2018-03-14T08:58:39.519205Z",
-  "secure_option": true,
-  "half_secure": null,
-  "pre_auth": false,
-  "return_url": null,
-  "customer_first_name": "John",
-  "customer_last_name": "Doe",
-  "customer_email": "johndoe@gmail.com",
-  "customer_ip_address": "212.57.9.204",
-  "billing_city": "San Francisco",
-  "billing_country": "US",
-  "billing_zipcode": null,
-  "billing_state": "CA",
-  "billing_phone": null,
-  "sale_data": {
-    "merchant_name": "Ted"
-  },
-  "items": [
-    {
-      "name": "product_name",
-      "photo": "https://sandbox.paytrek.com/statics/images/testing.jpg",
-      "quantity": 2,
-      "unit_price": "12.00"
-    }
-  ],
-  "created_at": "2018-03-14T07:58:39.519707Z",
-  "callback_url": null,
-  "refunded_amount": "0.00",
-  "status": "Created",
-  "financial_status": null,
-  "description": null,
-  "is_locked": false,
-  "hosted_payment": true,
-  "billing_address": "123 Market St. San Francisco",
-  "billing_company": null
-}
-```
-
-
 ## Charge
 
 #### HTTP `POST` Request - Charge Sale
@@ -1031,7 +1030,7 @@ curl_close($ch);
 var_dump($response);
 ```
 
-> Response 
+> Response - HTTP 200 status code 
 
 ```json
 {
@@ -1051,14 +1050,14 @@ var_dump($response);
 
 Charge Resource provides you the
 endpoint to charge a credit card. 
-You must create a [Sale](#reference/0/sale) object before charging your customer.
+You must create a [Sale](?#sale) object before charging your customer.
 If the sale that you are going to charge is Pre-Authorized (pre_auth must be true), 
 the sale will be captured.
 
 While charging a card, you can also store it with `save_card` option. 
 If `save_card` is settled `true` in request then it will be vaulted and 
 returns `card_token` in response. It allows to charge the card in
-the next payment within [Charge with token](#reference/0/charge-with-token).
+the next payment within [Charge with token](?#charge-with-token).
 
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
@@ -1090,7 +1089,7 @@ without creating any sale object. If the sale that you are going to charge is Pr
 While charging a card, you can also store it with `save_card` option. 
 If `save_card` is settled `true` in request then it will be vaulted and 
 returns `card_token` in response. It allows to charge the card in
-the next payment within [Charge with token](#reference/0/charge-with-token).
+the next payment within [Charge with token](?#charge-with-token).
 
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
@@ -1360,7 +1359,307 @@ var_dump($response);
 }
 ```
 
-## Vault [/vault/]
+## Vault
+
+> Following request vault card securely.
+
+#### HTTP `POST` Request - Vault Card
+
+`https://sandbox.paytrek.com/api/v2/vault/`
+
+```shell
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+     --data-binary "{
+  \"card_holder_name\": \"Joe Doe\",
+  \"number\": \"4508034508034509\",
+  \"expiration\": \"12/2020\",
+  \"cvc\": \"000\",
+  \"card_label\": \"Ted\"
+}" \
+'https://sandbox.paytrek.com/api/v2/vault/'
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+  {
+    "card_holder_name": "Joe Doe",
+    "number": "4508034508034509",
+    "expiration": "12/2020",
+    "cvc": "000",
+    "card_label": "Ted"
+  }
+"""
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/vault/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/vault/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_POST, TRUE);
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+  \"card_holder_name\": \"Joe Doe\",
+  \"number\": \"4508034508034509\",
+  \"expiration\": \"12/2020\",
+  \"cvc\": \"000\",
+  \"card_label\": \"Ted\"
+}");
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+    "request_id": null,
+    "sys_time": 1521015364,
+    "language_code": "tr",
+    "card_token": "2b54e2f7-58ad-40e3-9a71-f3bc9333c406",
+    "created_at": "2018-03-14T08:16:04.001969Z",
+    "bin_number": "450803",
+    "last4": "4509",
+    "card_brand": "visa",
+    "card_type": "credit",
+    "card_user_id": "b561169d7a2d467f885a7aedf7b10cf3",
+    "card_label": "Ted",
+    "card_issuer": "isbank",
+    "card_country": "TR"
+}
+```
+
+#### HTTP `GET` Request - Retrieve Vaulted Card
+
+`https://sandbox.paytrek.com/api/v2/vault/<card_token>/`
+
+> Following request retrieve a vaulted card 
+
+```shell
+curl --include \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+  'https://sandbox.paytrek.com/api/v2/vault/{card_token}/'
+```
+
+```python
+from urllib2 import Request, urlopen
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/vault/{card_token}/', headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/vault/{card_token}/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "request_id": null,
+  "sys_time": 1521015364,
+  "language_code": "tr",
+  "card_token": "2b54e2f7-58ad-40e3-9a71-f3bc9333c406",
+  "created_at": "2018-03-14T08:16:04.001969Z",
+  "bin_number": "450803",
+  "last4": "4509",
+  "card_brand": "visa",
+  "card_type": "credit",
+  "card_user_id": "b561169d7a2d467f885a7aedf7b10cf3",
+  "card_label": "Ted",
+  "card_issuer": "isbank",
+  "card_country": "TR"
+}
+```
+        
+#### HTTP `GET` Request - List Vaulted Card
+
+`https://sandbox.paytrek.com/api/v2/vault/?card_user_id=<value>&card_label=<value>`
+
+> Following request list vaulted cards.
+
+```shell
+curl --include \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+  'https://sandbox.paytrek.com/api/v2/vault/'
+```
+
+```python
+from urllib2 import Request, urlopen
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/vault/', headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/vault/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "request_id": null,
+      "sys_time": 1540562575,
+      "language_code": "en-us",
+      "card_token": "aac3a45b-8ced-4e4c-8ebb-c88ceff272f6",
+      "created_at": "2018-10-26T13:59:45.207410Z",
+      "bin_number": "450803",
+      "last4": "4509",
+      "card_brand": "visa",
+      "card_type": "credit",
+      "card_user_id": "10001",
+      "card_label": "",
+      "card_issuer": "isbank",
+      "card_country": "TR"
+    },
+    {
+      "request_id": null,
+      "sys_time": 1540562575,
+      "language_code": "en-us",
+      "card_token": "0f46ba98-d9d2-4fd3-93e4-6d23b4b48839",
+      "created_at": "2018-10-26T13:59:46.445397Z",
+      "bin_number": "450803",
+      "last4": "4509",
+      "card_brand": "visa",
+      "card_type": "credit",
+      "card_user_id": "10001",
+      "card_label": "",
+      "card_issuer": "isbank",
+      "card_country": "TR"
+    }
+  ]
+}
+```
+
+#### HTTP `DELETE` Request - Delete Vaulted Card
+
+`https://sandbox.paytrek.com/api/v2/vault/<card_token>/`
+
+> <aside class="warning">Following request delete vaulted card.</aside>
+
+```shell
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+  'https://sandbox.paytrek.com/api/v2/vault/{card_token}/'
+```
+
+```python
+from urllib2 import Request, urlopen
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/vault/{card_token}/', headers=headers)
+request.get_method = lambda: 'DELETE'
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/vault/{card_token}/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 204 status code
+
+```json
+
+```
 
 Paytrek allows you to store your customer’s PAN data on Paytrek’s secure vault. By using this endpoint, 
 you will only need to retrieve the credit card data from your customers only once and then you will be able to use the same data for charging any time you wish.
@@ -1375,145 +1674,103 @@ Here are the steps you must take:
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
 
-### Vault Card [POST]
+### Parameters
 
-+ Attributes
-    + number (number, required) - The credit card number.
-    + expiration (string, required) - The expiration date of the credit card, in MM/YY format.
-    + cvc (number, required) - The security number of the credit card.
-    + card_holder_name (string, required) - The name on card.
-    + card_label (string) - The optional card label name.
+|attribute| type  |  required  | description |
+|:-|:-|:-|:-|
+|number|string| Yes |The credit card number.|
+|expiration|string| Yes |The expiration date of the credit card, in MM/YY format.|
+|cvc|string| Yes |The security number of the credit card.|
+|card_holder_name|string| Yes |The name on card.|
+|card_label|string| No |The optional card label name.|
 
-+ Request (application/json)
-
-    + Headers
     
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-            
-            {
-              "card_holder_name": "Joe Doe",
-              "number": "4508034508034509",
-              "expiration": "12/2020",
-              "cvc": "000",
-              "card_label": "Ted"
-            }
-            
-                
-+ Response 200 (application/json)
+## Charge With Token
 
-        {
-            "request_id": null,
-            "sys_time": 1521015364,
-            "language_code": "tr",
-            "card_token": "2b54e2f7-58ad-40e3-9a71-f3bc9333c406",
-            "created_at": "2018-03-14T08:16:04.001969Z",
-            "bin_number": "450803",
-            "last4": "4509",
-            "card_brand": "visa",
-            "card_type": "credit",
-            "card_user_id": "b561169d7a2d467f885a7aedf7b10cf3",
-            "card_label": "Ted",
-            "card_issuer": "isbank",
-            "card_country": "TR"
-        }
+#### HTTP `POST` Request - Charge Sale by Card Token
 
-### Retrieve Vaulted Card [GET /vault/{card_token}/]
+`https://sandbox.paytrek.com/api/v2/charge_with_token/`
 
-+ Parameters
-    + card_token - Card token after vault operation.
+> Following request charge a sale by card token
 
-+ Request (application/json)
+```shell
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+     --data-binary "    {
+      \"sale_token\":\"5f20ca43d47244509949eb32c80e522a\",
+      \"card_token\":\"914dcf0b-236b-44e9-9b31-3925af88cdc5\"
+    }" \
+'https://sandbox.paytrek.com/api/v2/charge_with_token/'
+```
 
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
+```python
+from urllib2 import Request, urlopen
 
-+ Response 200 (application/json)
+values = """
+  {
+    "sale_token": "5f20ca43d47244509949eb32c80e522a",
+    "card_token": "914dcf0b-236b-44e9-9b31-3925af88cdc5"
+  }
+"""
 
-        {
-            "request_id": null,
-            "sys_time": 1521015364,
-            "language_code": "tr",
-            "card_token": "2b54e2f7-58ad-40e3-9a71-f3bc9333c406",
-            "created_at": "2018-03-14T08:16:04.001969Z",
-            "bin_number": "450803",
-            "last4": "4509",
-            "card_brand": "visa",
-            "card_type": "credit",
-            "card_user_id": "b561169d7a2d467f885a7aedf7b10cf3",
-            "card_label": "Ted",
-            "card_issuer": "isbank",
-            "card_country": "TR"
-        }
-        
-### List Vaulted Cards [GET /vault/]
-
-+ Parameters
-    + card_user_id (optional) - Card user id (you can set when you create vault)
-    + card_label (optional) - Card label
-    
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-
-+ Response 200 (application/json)
-
-        {
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "request_id": null,
-            "sys_time": 1540562575,
-            "language_code": "en-us",
-            "card_token": "aac3a45b-8ced-4e4c-8ebb-c88ceff272f6",
-            "created_at": "2018-10-26T13:59:45.207410Z",
-            "bin_number": "450803",
-            "last4": "4509",
-            "card_brand": "visa",
-            "card_type": "credit",
-            "card_user_id": "10001",
-            "card_label": "",
-            "card_issuer": "isbank",
-            "card_country": "TR"
-        },
-        {
-            "request_id": null,
-            "sys_time": 1540562575,
-            "language_code": "en-us",
-            "card_token": "0f46ba98-d9d2-4fd3-93e4-6d23b4b48839",
-            "created_at": "2018-10-26T13:59:46.445397Z",
-            "bin_number": "450803",
-            "last4": "4509",
-            "card_brand": "visa",
-            "card_type": "credit",
-            "card_user_id": "10001",
-            "card_label": "",
-            "card_issuer": "isbank",
-            "card_country": "TR"
-        }
-    ]
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
 }
-        
-### Delete Vaulted Card [DELETE /vault/{card_token}/]
-+ Parameters
-    + card_token - Card token after vault operation.
+request = Request('https://sandbox.paytrek.com/api/v2/charge_with_token/', data=values, headers=headers)
 
-+ Request (application/json)
+response_body = urlopen(request).read()
+print response_body
+```
 
-    + Headers
-        Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
+```php
+<?php
+$ch = curl_init();
 
-+ Response 204 (application/json)
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/charge_with_token/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
 
+curl_setopt($ch, CURLOPT_POST, TRUE);
 
-    
-## Charge With Token [/charge_with_token/]
+curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+  \"sale_token\": \"5f20ca43d47244509949eb32c80e522a\",
+  \"card_token\": \"914dcf0b-236b-44e9-9b31-3925af88cdc5\"
+}");
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "exp_month": "12",
+  "number": "450803******4509",
+  "payment_product": null,
+  "sale_token": "5f20ca43d47244509949eb32c80e522a",
+  "exp_year": "2020",
+  "sale_risk": null,
+  "card_holder_name": "J********",
+  "dcc_currency": null,
+  "succeeded": true,
+  "error_message": null,
+  "issuer_bank_id": "isbank",
+  "secure_charge": false,
+  "cvc": "***",
+  "return_url": "?token=5f20ca43d47244509949eb32c80e522a"
+}
+```
 
 This enpoint provides to charge the customer
 with created card token. You will notice there is no amount or quantity
@@ -1523,46 +1780,91 @@ and card token by using Vault endpoint before charging your customer.
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
 
-### Charge With Token [POST]
+### Parameters
 
-+ Attributes
-    + sale_token (string, required) - The sale token created though sale endpoint.
-    + card_token (string, required) - The card token created though vault endpoint.
+|attribute| type  |  required  | description |
+|:-|:-|:-|:-|
+|sale_token|string| Yes |The sale token created though sale endpoint.|
+|card_token|string| Yes |The card token created though vault endpoint.|
 
 
-+ Request (application/json)
+## Capture
 
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-    
-                {
-                  "sale_token":"5f20ca43d47244509949eb32c80e522a",
-                  "card_token":"914dcf0b-236b-44e9-9b31-3925af88cdc5"
-                }
-                
-+ Response 200 (application/json)
+#### HTTP `POST` Request - Capture pre-authorized sale 
 
-        {
-            "exp_month": "12",
-            "number": "450803******4509",
-            "payment_product": null,
-            "sale_token": "5f20ca43d47244509949eb32c80e522a",
-            "exp_year": "2020",
-            "sale_risk": null,
-            "card_holder_name": "J********",
-            "dcc_currency": null,
-            "succeeded": true,
-            "error_message": null,
-            "issuer_bank_id": "isbank",
-            "secure_charge": false,
-            "cvc": "***",
-            "return_url": "?token=5f20ca43d47244509949eb32c80e522a"
-        }
+`https://sandbox.paytrek.com/api/v2/capture/`
 
-## Capture [/capture/]
+> Following request charge a pre-authorized sale by card token
+
+```shell
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+     --data-binary "    {
+      \"sale_token\": \"b39887704acb480e81ab8611ae256719\",
+      \"comments\": \"testing\"
+    }" \
+'https://sandbox.paytrek.com/api/v2/capture/'
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+  {
+    "sale_token": "b39887704acb480e81ab8611ae256719",
+    "comments": "testing"
+  }
+"""
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/capture/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/capture/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_POST, TRUE);
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+  \"sale_token\": \"b39887704acb480e81ab8611ae256719\",
+  \"comments\": \"testing\"
+}");
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "sale_token": "a16a810b503c4a91bb5c3d883617530a",
+  "amount": "24.72",
+  "sale_amount": "24.72",
+  "sale_id": 97510,
+  "succeeded": true
+}
+```
 
 Capture endpoint provides to capture a payment.
 If you want to capture a payment that you've already pre-authorized, all you need to do is sending a POST request to the capture resource’s endpoint with the pre-authorized sale’s token.
@@ -1577,43 +1879,90 @@ Flow of pre-authorized payment :
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
 
-### Capture Sale [POST]
+### Parameters
 
-+ Attributes
-    + sale_token (string, required) - The sale token created though sale endpoint.
-    + comments (string, optional) - Comments for accepting the fraud review decision.
+|attribute| type  |  required  | description |
+|:-|:-|:-|:-|
+|sale_token|string| Yes |The sale token created though sale endpoint.|
+|comments|string| No |Comments for accepting the fraud review decision.|
 
 
-+ Request (application/json)
+## Cancel
 
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-    
-                {
-                  "sale_token": "b39887704acb480e81ab8611ae256719",
-                  "comments": "testing"
-                }
-                
-+ Response 200 (application/json)
+#### HTTP `POST` Request - Cancel Paid Sale
 
-         + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-    
-                {
-                    "sale_token": "a16a810b503c4a91bb5c3d883617530a",
-                    "amount": "24.72",
-                    "sale_amount": "24.72",
-                    "sale_id": 97510,
-                    "succeeded": true
-                }
-        
-## Cancel [/cancel/]
+`https://sandbox.paytrek.com/api/v2/cancel/`
+
+> Following request cancel a sale
+
+```shell
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+     --data-binary "    {
+      \"sale_token\": \"b39887704acb480e81ab8611ae256719\",
+      \"comments\": \"testing\"
+    }" \
+'https://sandbox.paytrek.com/api/v2/cancel/'
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+  {
+    "sale_token": "b39887704acb480e81ab8611ae256719",
+    "comments": "testing"
+  }
+"""
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/cancel/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/cancel/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_POST, TRUE);
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+  \"sale_token\": \"b39887704acb480e81ab8611ae256719\",
+  \"comments\": \"testing\"
+}");
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "sale_token": "a16a810b503c4a91bb5c3d883617530a",
+  "amount": 24,
+  "sale_amount": 24.72,
+  "succeeded": true
+}
+```
 
 Cancel endpoint provides to cancel and refund a payment.
 When a request is sent to the Cancel endpoint, it will issue a full refund.
@@ -1624,42 +1973,88 @@ If your sale was in review status, the sale’s fraud decision will be updated a
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
 
-### Cancel Sale [POST]
-
-+ Attributes
-    + sale_token (string, required) - The sale token created though sale endpoint.
-    + comments (string, optional) - Comments for accepting the fraud review decision.
-
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-    
-                {
-                  "sale_token": "b39887704acb480e81ab8611ae256719",
-                  "comments": "testing"
-                }
-                
-+ Response 200 (application/json)
-
-     + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-    
-        {
-            "sale_token": "a16a810b503c4a91bb5c3d883617530a",
-            "amount": 24,
-            "sale_amount": 24.72,
-            "succeeded": true
-        }
         
-## Refund [/refund/]
+## Refund
+
+#### HTTP `POST` Request - Refund Paid Sale
+
+`https://sandbox.paytrek.com/api/v2/refund/`
+
+> Following request refund a sale
+
+```shell
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+     --data-binary "    {
+      \"sale_token\": \"b39887704acb480e81ab8611ae256719\",
+      \"amount\": 9.70,
+      \"comments\": \"testing\"
+    }" \
+'https://sandbox.paytrek.com/api/v2/refund/'
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+  {
+    "sale_token": "b39887704acb480e81ab8611ae256719",
+    "amount": 9.7,
+    "comments": "testing"
+  }
+"""
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/refund/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/refund/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_POST, TRUE);
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+  \"sale_token\": \"b39887704acb480e81ab8611ae256719\",
+  \"amount\": 9.7,
+  \"comments\": \"testing\"
+}");
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "total_refunded_amount": 9.7,
+  "succeeded": true,
+  "sale_token": "b39887704acb480e81ab8611ae256719",
+  "sale_amount": 50,
+  "sale_id": 89890,
+  "amount": 9.7
+}
+```
 
 Refund endpoint provides refund a payment.
 When a request is sent to the Refund Resource, Paytrek will first try to cancel the payment. 
@@ -1673,43 +2068,254 @@ after you cancel it through the API.
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
 
-### Refund Sale [POST]
 
-+ Attributes
-    + sale_token (string, required) - The sale token that charged sale object.
-    + amount (number, optional) - Amount to refund.
-    + comments (string, optional) - Comments for accepting the fraud review decision.
+## Subscription Plan
 
-+ Request (application/json)
+#### HTTP `POST` Request - Create Subscription Plan
 
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-    
-                {
-                  "sale_token": "b39887704acb480e81ab8611ae256719",
-                  "amount": 9.70,
-                  "comments": "testing"
-                }
-                
-+ Response 200 (application/json)
+`https://sandbox.paytrek.com/api/v2/subscription_plan/`
 
-        {
-            "total_refunded_amount": 9.7,
-            "succeeded": true,
-            "sale_token": "b39887704acb480e81ab8611ae256719",
-            "sale_amount": 50,
-            "sale_id": 89890,
-            "amount": 9.7
-        }
+> Following request create a subscription plan
 
-## Subscription Plan [/subscription_plan/]
+```shell
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+     --data-binary "    {
+        \"secure_option\": \"false\",
+        \"card_holder_name\": \"John Doe\",
+        \"pre_auth\": false,
+        \"billing_address\": \"123 Market St. San Francisco\",
+        \"sale_data\": {},
+        \"recurring\" : {
+            \"name\": \"Test Store Recurring Payments\",
+            \"recurring_period\": \"Monthly\",
+            \"start_date\": \"2018-06-30\",
+            \"recurring_frequency\": 4
+        },
+        \"save_card\": true,
+        \"number\": \"4508034508034509\",
+        \"cvc\": \"000\",
+        \"customer_last_name\": \"Doe\",
+        \"billing_state\": \"CA\",
+        \"return_url\": \"https://www.google.com.tr/\",
+        \"currency\": \"TRY\",
+        \"amount\": \"100.00\",
+        \"customer_first_name\": \"John\",
+        \"billing_country\": \"US\",
+        \"billing_zipcode\": \"34410\",
+        \"billing_city\": \"San Francisco\",
+        \"customer_ip_address\": \"212.57.9.204\",
+        \"customer_email\": \"accept@paytrek.com\",
+        \"installment\": 1,
+        \"fraud_check_enabled\": false,
+        \"expiration\": \"12/2020\",
+        \"items\": [],
+        \"order_id\": \"20180424141314\",
+        \"half_secure\": false
+    }" \
+'https://sandbox.paytrek.com/api/v2/subscription_plan/
+```
+
+```python
+from urllib2 import Request, urlopen
+
+values = """
+  {
+    "secure_option": "false",
+    "card_holder_name": "John Doe",
+    "pre_auth": false,
+    "billing_address": "123 Market St. San Francisco",
+    "sale_data": {},
+    "recurring": {
+      "name": "Test Store Recurring Payments",
+      "recurring_period": "Monthly",
+      "start_date": "2018-06-30",
+      "recurring_frequency": 4
+    },
+    "save_card": true,
+    "number": "4508034508034509",
+    "cvc": "000",
+    "customer_last_name": "Doe",
+    "billing_state": "CA",
+    "return_url": "https://www.google.com.tr/",
+    "currency": "TRY",
+    "amount": "100.00",
+    "customer_first_name": "John",
+    "billing_country": "US",
+    "billing_zipcode": "34410",
+    "billing_city": "San Francisco",
+    "customer_ip_address": "212.57.9.204",
+    "customer_email": "accept@paytrek.com",
+    "installment": 1,
+    "fraud_check_enabled": false,
+    "expiration": "12/2020",
+    "items": [],
+    "order_id": "20180424141314",
+    "half_secure": false
+  }
+"""
+
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=='
+}
+request = Request('https://sandbox.paytrek.com/api/v2/subscription_plan/', data=values, headers=headers)
+
+response_body = urlopen(request).read()
+print response_body
+```
+
+```php
+<?php
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://sandbox.paytrek.com/api/v2/subscription_plan/");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+
+curl_setopt($ch, CURLOPT_POST, TRUE);
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+  \"secure_option\": \"false\",
+  \"card_holder_name\": \"John Doe\",
+  \"pre_auth\": false,
+  \"billing_address\": \"123 Market St. San Francisco\",
+  \"sale_data\": {},
+  \"recurring\": {
+    \"name\": \"Test Store Recurring Payments\",
+    \"recurring_period\": \"Monthly\",
+    \"start_date\": \"2018-06-30\",
+    \"recurring_frequency\": 4
+  },
+  \"save_card\": true,
+  \"number\": \"4508034508034509\",
+  \"cvc\": \"000\",
+  \"customer_last_name\": \"Doe\",
+  \"billing_state\": \"CA\",
+  \"return_url\": \"https://www.google.com.tr/\",
+  \"currency\": \"TRY\",
+  \"amount\": \"100.00\",
+  \"customer_first_name\": \"John\",
+  \"billing_country\": \"US\",
+  \"billing_zipcode\": \"34410\",
+  \"billing_city\": \"San Francisco\",
+  \"customer_ip_address\": \"212.57.9.204\",
+  \"customer_email\": \"accept@paytrek.com\",
+  \"installment\": 1,
+  \"fraud_check_enabled\": false,
+  \"expiration\": \"12/2020\",
+  \"items\": [],
+  \"order_id\": \"20180424141314\",
+  \"half_secure\": false
+}");
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+  "Content-Type: application/json",
+  "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ=="
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "secure_option": true,
+  "half_secure": false,
+  "currency": "TRY",
+  "customer_email": "accept@paytrek.com",
+  "language_code": "tr-tr",
+  "card_token": "ab5b2706-75c6-4929-8269-9f410fe54178",
+  "billing_country": "US",
+  "customer_ip_address": "212.57.9.204",
+  "description": null,
+  "customer_last_name": "Doe",
+  "billing_zipcode": "34410",
+  "financial_status": null,
+  "billing_phone": null,
+  "sale_data": {},
+  "card_brand": "visa",
+  "sys_time": 1529389543,
+  "pre_auth": false,
+  "billing_address": "123 Market St. San Francisco",
+  "card_country": "TR",
+  "transactions": [],
+  "order_id": "20180424141314",
+  "expires_at": "2018-06-19T07:25:42.720412Z",
+  "card_issuer": "isbank",
+  "hosted_payment": true,
+  "sale_token": "8639b66510424eca9b104f5ad0be634e",
+  "subscription_plan": {
+    "cancelled_at": null,
+    "vaults": [
+      {
+        "card_type": "credit",
+        "last4": "4509",
+        "token": "ab5b2706-75c6-4929-8269-9f410fe54178",
+        "card_brand": "visa"
+      }
+    ],
+    "name": "Test Store Recurring Payments",
+    "plan_token": "d0351fe3-4c05-4611-8c38-c07ff33679e0",
+    "is_active": true,
+    "fixed_currency_amount": null,
+    "subscriptions": [
+      {
+        "status": "Active",
+        "payment_date": "2018-10-18T21:00:00Z",
+        "subscription_token": "6ac1726c-b8bd-4241-8976-601bcf4e4b75"
+      },
+      {
+        "status": "Active",
+        "payment_date": "2018-09-18T21:00:00Z",
+        "subscription_token": "a1ad588a-9291-4d14-a4ee-ec94d07389ab"
+      },
+      {
+        "status": "Active",
+        "payment_date": "2018-08-18T21:00:00Z",
+        "subscription_token": "9b5ee804-5399-423a-a0b7-794f1145ea4a"
+      },
+      {
+        "status": "Active",
+        "payment_date": "2018-07-18T21:00:00Z",
+        "subscription_token": "73a3eea0-06f8-4113-9412-7c32f976e2e4"
+      }
+    ],
+    "active_card_token": "ab5b2706-75c6-4929-8269-9f410fe54178",
+    "created_at": "2018-06-19T06:25:43.520000Z",
+    "description": null
+  },
+  "billing_city": "San Francisco",
+  "installment": 1,
+  "last4": "4509",
+  "is_locked": false,
+  "items": [],
+  "created_at": "2018-06-19T06:25:43.421093Z",
+  "refunded_amount": "0.00",
+  "card_type": "credit",
+  "amount": "100.00",
+  "card_label": "",
+  "status": "Created",
+  "return_url": "https://www.google.com.tr/",
+  "billing_company": null,
+  "request_id": null,
+  "customer_first_name": "John",
+  "card_user_id": "69daf8cb6fe741a885cad8219bdb9dac",
+  "callback_url": null,
+  "billing_state": "CA",
+  "bin_number": "450803"
+}
+```
 
 Paytrek allows you to create subscription plans for recurring payments.
 Subscription plan endpoint requires almost the same request parameters 
-with [`Direct Charge`](#reference/0/direct-charge) except `recurring` one.
+with [`Direct Charge`](?#direct-charge) except `recurring` one.
 
 It's a json block that includes following parameters for creating a new plan.
 ```
@@ -1733,339 +2339,127 @@ In addition, it's mandatory to set `save_card: true` while creating subscription
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
 
-### Create Subscription Plan [POST]
+### Parameters
+
+|attribute| type  |  required  | description |
+|:-|:-|:-|:-|
+|currency|string| Yes |3-letter ISO code for currency.|
+|order_id|string| Yes |The order id of the sale.|
+|amount|decimal| Yes |The amount to charge the visitor.|
+|customer_first_name|string| Yes |Customer's first name.|
+|customer_last_name|string| Yes |Customer's last name.|
+|customer_email|string| Yes |Customer's email address.|
+|customer_ip_address|string| Yes |Customer's ip address.|
+|billing_address|string| Yes |Customer's billing address.|
+|billing_city|string| Yes |Customer's billing city.|
+|billing_state|string| No |Customer's billing state, use postal abbreviations for US and CA.|
+|billing_country|string| Yes |Customer's billing country. 2-letter ISO code.|
+|billing_zipcode|string| No |Customer's billing zipcode.|
+|billing_phone|string| No |Customer's billing phone number.|
+|items|json| Yes |The item related informations which is selling.|
+|return_url|string| No |Related link that user is redirected when payment completed.|
+|hosted_payment|string| No |To use the hosted payment page.|
+|hosted_payment_url|string| No |Returns to hosted payment page url.|
+|installment|integer| No |Returns to hosted payment page url.|
+|half_secure|boolean| No |Whether the sale can be charged if 3d enrollment check returns mdstatus 2, 3, 4.|
+|secure_option|boolean| No |Whether the sale is secure.|
+|pre_auth|boolean| No |Indicates whether this sale should be pre-authorized.|
+|sale_data|json| No |Extra fields for sale.|
+|number|string| Yes |The credit card number.|
+|expiration|string| Yes |The expiration date of the credit card, in MM/YY format.|
+|cvc|string| Yes |The security number of the credit card.|
+|card_holder_name|string| Yes |The name on card.|
+|save_card|boolean| No |The card storing option.|
+|recurring|json| Yes |Subscription plan proporties.|
+
 
 + Attributes
-    + currency (string, required) - 3-letter ISO code for currency.
-    + order_id (string, required) - The order id of the sale.
-    + amount  (number, required) - The amount to charge the visitor.
-    + number (number, required) - The credit card number.
-    + expiration (string, required) - The expiration date of the credit card, in MM/YY format.
-    + cvc (number, required) - The security number of the credit card.
-    + card_holder_name - The name on card.
-    + recurring (object, required) - Subscription plan proporties.
+    + recurring (json, required) - Subscription plan proporties.
         + name(string, required) - The name of subscriotion plan.
         + start_date(string) - To define when subscription plan will begin.
         + recurring_period(string, required) - The recurring period.
         + recurring_frequency(number, required) - The recurring frequency to define how many periods.
-    + installment (number, required) - The installment number of the sale.
-    + secure_option (boolean) - Whether the sale is secure.
-        + Default: false
-    + half_secure (boolean) - Whether the sale can be charged if 3d enrollment check returns mdstatus 2, 3, 4.
-    + return_url (string, required) - Related link that user is redirected when payment completed. 
-    + pre_auth (boolean) - Indicates whether this sale should be pre-authorized.
-        + Default: false
-    + items (object, required) - The item related informations which is selling.
-    + customer_first_name (string, required) - Customer's first name.
-    + customer_last_name (string, required) - Customer's last name. 
-    + customer_email (string, required) - Customer's email address.
-    + customer_ip_address (string, required) - Customer's ip address.  
-    + billing_address (string, required) - Customer's billing address.
-    + billing_city (string, required) - Customer's billing city.
-    + billing_state (string) - Customer's billing state, use postal abbreviations for US and CA.
-    + billing_country (string, required) - Customer's billing country, 2-letter ISO code. 
-    + billing_zipcode (string, required) - Customer's billing zipcode.
-    + billing_phone (string, required) - Customer's billing phone number.
-    + sale_data (object) - Extra fields for sale.
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-    + Body
-    
-                {
-                    "secure_option": "false",
-                    "card_holder_name": "John Doe",
-                    "pre_auth": false,
-                    "billing_address": "123 Market St. San Francisco",
-                    "sale_data": {},
-                    "recurring" : {
-                        "name": "Test Store Recurring Payments",
-                        "recurring_period": "Monthly",
-                        "start_date": "2018-06-30",
-                        "recurring_frequency": 4
-                    },
-                    "save_card": true,
-                    "number": "4508034508034509",
-                    "cvc": "000",
-                    "customer_last_name": "Doe",
-                    "billing_state": "CA",
-                    "return_url": "https://www.google.com.tr/",
-                    "currency": "TRY",
-                    "amount": "100.00",
-                    "customer_first_name": "John",
-                    "billing_country": "US",
-                    "billing_zipcode": "34410",
-                    "billing_city": "San Francisco",
-                    "customer_ip_address": "212.57.9.204",
-                    "customer_email": "accept@paytrek.com",
-                    "installment": 1,
-                    "fraud_check_enabled": false,
-                    "expiration": "12/2020",
-                    "items": [],
-                    "order_id": "20180424141314",
-                    "half_secure": false
-                }
-            
-                
-+ Response 200 (application/json)
-
-        {
-            "secure_option": true,
-            "half_secure": false,
-            "currency": "TRY",
-            "customer_email": "accept@paytrek.com",
-            "language_code": "tr-tr",
-            "card_token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-            "billing_country": "US",
-            "customer_ip_address": "212.57.9.204",
-            "description": null,
-            "customer_last_name": "Doe",
-            "billing_zipcode": "34410",
-            "financial_status": null,
-            "billing_phone": null,
-            "sale_data": {},
-            "card_brand": "visa",
-            "sys_time": 1529389543,
-            "pre_auth": false,
-            "billing_address": "123 Market St. San Francisco",
-            "card_country": "TR",
-            "transactions": [],
-            "order_id": "20180424141314",
-            "expires_at": "2018-06-19T07:25:42.720412Z",
-            "card_issuer": "isbank",
-            "hosted_payment": true,
-            "sale_token": "8639b66510424eca9b104f5ad0be634e",
-            "subscription_plan": {
-                "cancelled_at": null,
-                "vaults": [
-                    {
-                        "card_type": "credit",
-                        "last4": "4509",
-                        "token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-                        "card_brand": "visa"
-                    }
-                ],
-                "name": "Test Store Recurring Payments",
-                "plan_token": "d0351fe3-4c05-4611-8c38-c07ff33679e0",
-                "is_active": true,
-                "fixed_currency_amount": null,
-                "subscriptions": [
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-10-18T21:00:00Z",
-                        "subscription_token": "6ac1726c-b8bd-4241-8976-601bcf4e4b75"
-                    },
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-09-18T21:00:00Z",
-                        "subscription_token": "a1ad588a-9291-4d14-a4ee-ec94d07389ab"
-                    },
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-08-18T21:00:00Z",
-                        "subscription_token": "9b5ee804-5399-423a-a0b7-794f1145ea4a"
-                    },
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-07-18T21:00:00Z",
-                        "subscription_token": "73a3eea0-06f8-4113-9412-7c32f976e2e4"
-                    }
-                ],
-                "active_card_token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-                "created_at": "2018-06-19T06:25:43.520000Z",
-                "description": null
-            },
-            "billing_city": "San Francisco",
-            "installment": 1,
-            "last4": "4509",
-            "is_locked": false,
-            "items": [],
-            "created_at": "2018-06-19T06:25:43.421093Z",
-            "refunded_amount": "0.00",
-            "card_type": "credit",
-            "amount": "100.00",
-            "card_label": "",
-            "status": "Created",
-            "return_url": "https://www.google.com.tr/",
-            "billing_company": null,
-            "request_id": null,
-            "customer_first_name": "John",
-            "card_user_id": "69daf8cb6fe741a885cad8219bdb9dac",
-            "callback_url": null,
-            "billing_state": "CA",
-            "bin_number": "450803"
-        }
-
-### Retrieve Subscription Plan [GET]
-
-+ Parameters
-    + plan_token - Subscription plan token.
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-
-+ Response 200 (application/json)
-
-        {
-            "secure_option": true,
-            "half_secure": false,
-            "currency": "TRY",
-            "customer_email": "accept@paytrek.com",
-            "language_code": "tr-tr",
-            "card_token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-            "billing_country": "US",
-            "customer_ip_address": "212.57.9.204",
-            "description": null,
-            "customer_last_name": "Doe",
-            "billing_zipcode": "34410",
-            "financial_status": null,
-            "billing_phone": null,
-            "sale_data": {},
-            "card_brand": "visa",
-            "sys_time": 1529389543,
-            "pre_auth": false,
-            "billing_address": "123 Market St. San Francisco",
-            "card_country": "TR",
-            "transactions": [],
-            "order_id": "20180424141314",
-            "expires_at": "2018-06-19T07:25:42.720412Z",
-            "card_issuer": "isbank",
-            "hosted_payment": true,
-            "sale_token": "8639b66510424eca9b104f5ad0be634e",
-            "subscription_plan": {
-                "cancelled_at": null,
-                "vaults": [
-                    {
-                        "card_type": "credit",
-                        "last4": "4509",
-                        "token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-                        "card_brand": "visa"
-                    }
-                ],
-                "name": "Test Store Recurring Payments",
-                "plan_token": "d0351fe3-4c05-4611-8c38-c07ff33679e0",
-                "is_active": true,
-                "fixed_currency_amount": null,
-                "subscriptions": [
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-10-18T21:00:00Z",
-                        "subscription_token": "6ac1726c-b8bd-4241-8976-601bcf4e4b75"
-                    },
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-09-18T21:00:00Z",
-                        "subscription_token": "a1ad588a-9291-4d14-a4ee-ec94d07389ab"
-                    },
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-08-18T21:00:00Z",
-                        "subscription_token": "9b5ee804-5399-423a-a0b7-794f1145ea4a"
-                    },
-                    {
-                        "status": "Active",
-                        "payment_date": "2018-07-18T21:00:00Z",
-                        "subscription_token": "73a3eea0-06f8-4113-9412-7c32f976e2e4"
-                    }
-                ],
-                "active_card_token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-                "created_at": "2018-06-19T06:25:43.520000Z",
-                "description": null
-            },
-            "billing_city": "San Francisco",
-            "installment": 1,
-            "last4": "4509",
-            "is_locked": false,
-            "items": [],
-            "created_at": "2018-06-19T06:25:43.421093Z",
-            "refunded_amount": "0.00",
-            "card_type": "credit",
-            "amount": "100.00",
-            "card_label": "",
-            "status": "Created",
-            "return_url": "https://www.google.com.tr/",
-            "billing_company": null,
-            "request_id": null,
-            "customer_first_name": "John",
-            "card_user_id": "69daf8cb6fe741a885cad8219bdb9dac",
-            "callback_url": null,
-            "billing_state": "CA",
-            "bin_number": "450803"
-        }
-
-### Update Subscription Plan [PUT]
-
-+ Parameters
-    + plan_token - Subscription plan token.
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-
-    + Body
-    
-        {
-            "subscriptions": [{
-                    "subscription_token": "6ac1726c-b8bd-4241-8976-601bcf4e4b75",
-                    "status": "Cancelled",
-            }],
-            "name": "New Test Store Recurring Payments"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "cancelled_at": null,
-            "vaults": [
-                {
-                    "card_type": "credit",
-                    "last4": "4509",
-                    "token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-                    "card_brand": "visa"
-                }
-            ],
-            "name": "New Test Store Recurring Payments",
-            "plan_token": "d0351fe3-4c05-4611-8c38-c07ff33679e0",
-            "is_active": true,
-            "fixed_currency_amount": null,
-            "subscriptions": [
-                {
-                    "status": "Cancelled",
-                    "payment_date": "2018-10-18T21:00:00Z",
-                    "subscription_token": "6ac1726c-b8bd-4241-8976-601bcf4e4b75"
-                },
-                {
-                    "status": "Active",
-                    "payment_date": "2018-09-18T21:00:00Z",
-                    "subscription_token": "a1ad588a-9291-4d14-a4ee-ec94d07389ab"
-                },
-                {
-                    "status": "Active",
-                    "payment_date": "2018-08-18T21:00:00Z",
-                    "subscription_token": "9b5ee804-5399-423a-a0b7-794f1145ea4a"
-                },
-                {
-                    "status": "Active",
-                    "payment_date": "2018-07-18T21:00:00Z",
-                    "subscription_token": "73a3eea0-06f8-4113-9412-7c32f976e2e4"
-                }
-            ],
-            "active_card_token": "ab5b2706-75c6-4929-8269-9f410fe54178",
-            "created_at": "2018-06-19T06:25:43.520000Z",
-            "description": null
-        }
-
         
-## Installments [/installments/?bin_number={bin_number}&amount={amount}]
+        
+## Installments
+
+#### HTTP `GET` Request - List Installment Alternatives by Parameters
+
+`https://sandbox.paytrek.com/api/v2/installments/?bin_number=<value>&amount=<value>`
+
+> Following request list installment alternatives
+
+```shell
+curl --include \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==" \
+  'https://sandbox.paytrek.com/api/v2/installments/?bin_number=&amount='
+```
+
+> Response - HTTP 200 status code
+
+```json
+{
+  "sys_time": 1520321002,
+  "language_code": "en-us",
+  "bin_number": "510118",
+  "amount": "123.00",
+  "banks": [
+    {
+      "card_brand": "mastercard",
+      "card_type": "credit",
+      "card_issuer": "denizbank",
+      "card_country": "TR",
+      "loyalty": "bonus",
+      "is_commercial": false,
+      "installments": [
+        {
+          "number": 1,
+          "commission": "9.92",
+          "instalment_amounts": "132.92",
+          "total_amount": "132.92",
+          "total_amount_wo_commission": "113.08"
+        },
+        {
+          "number": 2,
+          "commission": "9.92",
+          "instalment_amounts": "66.46",
+          "total_amount": "132.92",
+          "total_amount_wo_commission": "113.08"
+        },
+        {
+          "number": 3,
+          "commission": "9.92",
+          "instalment_amounts": "44.31",
+          "total_amount": "132.92",
+          "total_amount_wo_commission": "113.08"
+        },
+        {
+          "number": 4,
+          "commission": "5.46",
+          "instalment_amounts": "32.12",
+          "total_amount": "128.46",
+          "total_amount_wo_commission": "117.54"
+        },
+        {
+          "number": 5,
+          "commission": "5.46",
+          "instalment_amounts": "25.69",
+          "total_amount": "128.46",
+          "total_amount_wo_commission": "117.54"
+        },
+        {
+          "number": 6,
+          "commission": "5.46",
+          "instalment_amounts": "21.41",
+          "total_amount": "128.46",
+          "total_amount_wo_commission": "117.54"
+        }
+      ]
+    }
+  ]
+}
+```
 
 Installments endpoint provides to list installment alternatives and 
 cards through by given ```bin_number``` and ```amount``` as parameters in url. 
@@ -2073,291 +2467,9 @@ cards through by given ```bin_number``` and ```amount``` as parameters in url.
 In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
 between tabs via using swicth console.
 
-### Get Installment Options [GET]
-
-+ Parameters
-    + bin_number (optional) - First 6 digits of card.
-    + amount - Amount for installment plans.
-
-+ Request (application/json)
-
-    + Headers
-    
-            Authorization: Basic aEtHWE53SFExRk5IOld2OXI5QmdxSnFocQ==
-    
-                
-+ Response 200 (application/json)
-
-           {
-                "sys_time": 1520321002,
-                "language_code": "en-us",
-                "bin_number": "510118",
-                "amount": "123.00",
-                "banks": [
-                    {
-                        "card_brand": "mastercard",
-                        "card_type": "credit",
-                        "card_issuer": "denizbank",
-                        "card_country": "TR",
-                        "loyalty": "bonus",
-                        "is_commercial": false,
-                        "installments": [
-                            {
-                                "number": 1,
-                                "commission": "9.92",
-                                "instalment_amounts": "132.92",
-                                "total_amount": "132.92",
-                                "total_amount_wo_commission": "113.08"
-                            },
-                            {
-                                "number": 2,
-                                "commission": "9.92",
-                                "instalment_amounts": "66.46",
-                                "total_amount": "132.92",
-                                "total_amount_wo_commission": "113.08"
-                            },
-                            {
-                                "number": 3,
-                                "commission": "9.92",
-                                "instalment_amounts": "44.31",
-                                "total_amount": "132.92",
-                                "total_amount_wo_commission": "113.08"
-                            },
-                            {
-                                "number": 4,
-                                "commission": "5.46",
-                                "instalment_amounts": "32.12",
-                                "total_amount": "128.46",
-                                "total_amount_wo_commission": "117.54"
-                            },
-                            {
-                                "number": 5,
-                                "commission": "5.46",
-                                "instalment_amounts": "25.69",
-                                "total_amount": "128.46",
-                                "total_amount_wo_commission": "117.54"
-                            },
-                            {
-                                "number": 6,
-                                "commission": "5.46",
-                                "instalment_amounts": "21.41",
-                                "total_amount": "128.46",
-                                "total_amount_wo_commission": "117.54"
-                            }
-                        ]
-                    }
-                ]
-            }
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+### Parameters
+
+|attribute| type  |  required  | description |
+|:-|:-|:-|:-|
+|bin_number|string| No |First 6 digits of card.|
+|amount|string| No |Amount for installment plans.|
