@@ -1082,50 +1082,6 @@ between tabs via using swicth console.
 
 `https://sandbox.paytrek.com/api/v2/direct_charge/`
 
-Direct charge endpoint provides to charge a credit card instantly 
-without creating any sale object. If the sale that you are going to charge is Pre-Authorized 
-(`pre_auth` must be ```true```), the sale will be captured.
-
-While charging a card, you can also store it with `save_card` option. 
-If `save_card` is settled `true` in request then it will be vaulted and 
-returns `card_token` in response. It allows to charge the card in
-the next payment within [Charge with token](?#charge-with-token).
-
-In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
-between tabs via using swicth console.
-
-### Parameters
-
-|attribute| type  |  required  | description |
-|:-|:-|:-|:-|
-|currency|string| Yes |3-letter ISO code for currency.|
-|order_id|string| Yes |The order id of the sale.|
-|amount|decimal| Yes |The amount to charge the visitor.|
-|customer_first_name|string| Yes |Customer's first name.|
-|customer_last_name|string| Yes |Customer's last name.|
-|customer_email|string| Yes |Customer's email address.|
-|customer_ip_address|string| Yes |Customer's ip address.|
-|billing_address|string| Yes |Customer's billing address.|
-|billing_city|string| Yes |Customer's billing city.|
-|billing_state|string| No |Customer's billing state, use postal abbreviations for US and CA.|
-|billing_country|string| Yes |Customer's billing country. 2-letter ISO code.|
-|billing_zipcode|string| No |Customer's billing zipcode.|
-|billing_phone|string| No |Customer's billing phone number.|
-|items|json| Yes |The item related informations which is selling.|
-|return_url|string| No |Related link that user is redirected when payment completed.|
-|hosted_payment|string| No |To use the hosted payment page.|
-|hosted_payment_url|string| No |Returns to hosted payment page url.|
-|installment|integer| No |Returns to hosted payment page url.|
-|half_secure|boolean| No |Whether the sale can be charged if 3d enrollment check returns mdstatus 2, 3, 4.|
-|secure_option|boolean| No |Whether the sale is secure.|
-|pre_auth|boolean| No |Indicates whether this sale should be pre-authorized.|
-|sale_data|json| No |Extra fields for sale.|
-|number|string| Yes |The credit card number.|
-|expiration|string| Yes |The expiration date of the credit card, in MM/YY format.|
-|cvc|string| Yes |The security number of the credit card.|
-|card_holder_name|string| Yes |The name on card.|
-|save_card|boolean| No |The card storing option.|
-
 > Following request charge sale directly. 
 
 ```shell
@@ -1358,6 +1314,51 @@ var_dump($response);
   "billing_state": "CA"
 }
 ```
+
+Direct charge endpoint provides to charge a credit card instantly 
+without creating any sale object. If the sale that you are going to charge is Pre-Authorized 
+(`pre_auth` must be ```true```), the sale will be captured.
+
+While charging a card, you can also store it with `save_card` option. 
+If `save_card` is settled `true` in request then it will be vaulted and 
+returns `card_token` in response. It allows to charge the card in
+the next payment within [Charge with token](?#charge-with-token).
+
+In  order to make request you may find the necessary parameters on  following link in by opening new tab and you may also make the request  by 
+between tabs via using swicth console.
+
+### Parameters
+
+|attribute| type  |  required  | description |
+|:-|:-|:-|:-|
+|currency|string| Yes |3-letter ISO code for currency.|
+|order_id|string| Yes |The order id of the sale.|
+|amount|decimal| Yes |The amount to charge the visitor.|
+|customer_first_name|string| Yes |Customer's first name.|
+|customer_last_name|string| Yes |Customer's last name.|
+|customer_email|string| Yes |Customer's email address.|
+|customer_ip_address|string| Yes |Customer's ip address.|
+|billing_address|string| Yes |Customer's billing address.|
+|billing_city|string| Yes |Customer's billing city.|
+|billing_state|string| No |Customer's billing state, use postal abbreviations for US and CA.|
+|billing_country|string| Yes |Customer's billing country. 2-letter ISO code.|
+|billing_zipcode|string| No |Customer's billing zipcode.|
+|billing_phone|string| No |Customer's billing phone number.|
+|items|json| Yes |The item related informations which is selling.|
+|return_url|string| No |Related link that user is redirected when payment completed.|
+|hosted_payment|string| No |To use the hosted payment page.|
+|hosted_payment_url|string| No |Returns to hosted payment page url.|
+|installment|integer| No |Returns to hosted payment page url.|
+|half_secure|boolean| No |Whether the sale can be charged if 3d enrollment check returns mdstatus 2, 3, 4.|
+|secure_option|boolean| No |Whether the sale is secure.|
+|pre_auth|boolean| No |Indicates whether this sale should be pre-authorized.|
+|sale_data|json| No |Extra fields for sale.|
+|number|string| Yes |The credit card number.|
+|expiration|string| Yes |The expiration date of the credit card, in MM/YY format.|
+|cvc|string| Yes |The security number of the credit card.|
+|card_holder_name|string| Yes |The name on card.|
+|save_card|boolean| No |The card storing option.|
+
 
 ## Vault
 
